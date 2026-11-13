@@ -6,7 +6,6 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
@@ -29,8 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private SwitchCompat switchModoNoche;
     private TextView tvTitulo;
 
-    // RAMA feature/boton-panico
-    private Button btnPanico;
+    // TODO RAMA feature/boton-panico: Declarar referencia a btnPanico
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,14 +80,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // RAMA feature/boton-panico
-        btnPanico = findViewById(R.id.btnPanico);
-
-        btnPanico.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, R.string.toast_alerta_panico, Toast.LENGTH_LONG).show();
-            }
-        });
+        // TODO RAMA feature/boton-panico: Configurar listener del botón de pánico
     }
 }
