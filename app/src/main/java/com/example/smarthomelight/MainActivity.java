@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -17,10 +18,11 @@ public class MainActivity extends AppCompatActivity {
     // Estado del interruptor
     private boolean luzEncendida = false;
 
-    // TODO RAMA feature/contador-luces: Declarar variable contador y referencia a tvContador
+    // RAMA feature/contador-luces
+    private TextView tvContador;
+    private int contadorPulsaciones = 0;
 
     // TODO RAMA feature/modo-noche: Declarar referencia a switchModoNoche
-
     // TODO RAMA feature/boton-panico: Declarar referencia a btnPanico
 
     @Override
@@ -31,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
         layoutRaiz = findViewById(R.id.layoutRaiz);
         tvEstadoLuz = findViewById(R.id.tvEstadoLuz);
         btnInterruptor = findViewById(R.id.btnInterruptor);
+
+        // RAMA feature/contador-luces
+        tvContador = findViewById(R.id.tvContador);
+        tvContador.setText(getString(R.string.texto_contador, contadorPulsaciones));
 
         btnInterruptor.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,13 +52,13 @@ public class MainActivity extends AppCompatActivity {
                     tvEstadoLuz.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.estado_apagado));
                 }
 
-                // TODO RAMA feature/contador-luces: Incrementar contador y actualizar interfaz
+                // RAMA feature/contador-luces
+                contadorPulsaciones++;
+                tvContador.setText(getString(R.string.texto_contador, contadorPulsaciones));
             }
         });
 
         // TODO RAMA feature/modo-noche: Configurar listener del switch para cambiar color de fondo
-
         // TODO RAMA feature/boton-panico: Configurar listener del botón de pánico
     }
 }
-
