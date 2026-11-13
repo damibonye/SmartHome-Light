@@ -3,10 +3,12 @@ package com.example.smarthomelight;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.content.ContextCompat;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,7 +24,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvContador;
     private int contadorPulsaciones = 0;
 
-    // TODO RAMA feature/modo-noche: Declarar referencia a switchModoNoche
+    // RAMA feature/modo-noche
+    private SwitchCompat switchModoNoche;
+    private TextView tvTitulo;
+
     // TODO RAMA feature/boton-panico: Declarar referencia a btnPanico
 
     @Override
@@ -58,7 +63,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // TODO RAMA feature/modo-noche: Configurar listener del switch para cambiar color de fondo
+        // RAMA feature/modo-noche
+        tvTitulo = findViewById(R.id.tvTitulo);
+        switchModoNoche = findViewById(R.id.switchModoNoche);
+
+        switchModoNoche.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    layoutRaiz.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.fondo_oscuro));
+                    tvTitulo.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.texto_oscuro));
+                } else {
+                    layoutRaiz.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.fondo_claro));
+                    tvTitulo.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.texto_claro));
+                }
+            }
+        });
+
         // TODO RAMA feature/boton-panico: Configurar listener del botón de pánico
     }
 }
